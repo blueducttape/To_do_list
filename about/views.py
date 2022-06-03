@@ -7,7 +7,7 @@ from .settings_local import SERVER_VERSION
 class IndexView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
         context = {
-            "user_name" : str(request.user),
+            "user_name": str(request.user),
             "server_version": SERVER_VERSION,
         }
         return render(request, "about/index.html", context=context)

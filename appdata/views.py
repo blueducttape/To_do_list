@@ -26,7 +26,7 @@ def home(request):
 class NoteView(APIView):
     def get(self, request):
         """ Получить список всех записей """
-        notes = Note.objects.filter(public=True).order_by('-date_add', 'important')
+        notes = Note.objects.filter(public=True).order_by('important')
         notes_serializer = NoteSerializer(notes, many=True)
         return Response(notes_serializer.data)
 
