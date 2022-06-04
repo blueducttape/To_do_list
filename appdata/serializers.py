@@ -11,7 +11,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 class NoteSerializer(serializers.ModelSerializer):
-    """Сериализует все статьи блога"""
+    """Сериализация всех статей блога"""
     # Меняем вывод, вместо `ID` пользователя будет `Имя`
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 

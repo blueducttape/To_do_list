@@ -14,7 +14,7 @@ class Note(models.Model):
     class Status(models.IntegerChoices):
         """Описание статуса дела"""
         ACTIVE= 1, _('Активная')
-        DEFFERED = 0, _('Отложенная')
+        DETERRED = 0, _('Отложенная')
         DONE = 2, _('Выполнено')
 
     """Описание одного дела"""

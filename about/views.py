@@ -12,3 +12,5 @@ class IndexView(View):
         }
         return render(request, "about/index.html", context=context)
 
+
+
