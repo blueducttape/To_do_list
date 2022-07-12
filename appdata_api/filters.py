@@ -1,38 +1,28 @@
-from django.db.models import QuerySet
-from typing import List, Optional
+from typing import Optional
+from django.db.models.query import QuerySet
 
 
-def filter_by_status(queryset: QuerySet, status_code: Optional[List]) -> QuerySet:
+def importance_filter(queryset: QuerySet, importance) -> QuerySet:
     """
-    Фильтрация по статусу записи
-    :param queryset: исходный queryset
-    :param status_code: список состояний
-    :return: модернизированный queryset
+    Функция, фильтрующая заметки по полю Важно
+    :param queryset: запрос
+    :param importance: True или False
+    :return: отфильтрованный queryset
     """
-    if status_code:
-        queryset = queryset.filter(status__in=status_code)
-    return queryset
+    if importance is not None:
+        return queryset.filter(importance=importance)
+    else:
+        return queryset
 
 
-def filter_by_important(queryset: QuerySet, important: Optional[bool]):
+def public_filter(queryset: QuerySet, public: Optional[bool]) -> QuerySet:
     """
-    Фильтрация по полю "Важность"
-    :param queryset: исходный queryset
-    :param important: Bool True / False
-    :return: модернизированный queryset
+    Функция, фильтрующая заметки по полю Опубликовано
+    :param queryset: запрос
+    :param public: True или False
+    :return: отфильтрованный queryset
     """
-    if important:
-        queryset = queryset.filter(important=important)
-    return queryset
-
-
-def filter_by_public(queryset: QuerySet, public: Optional[bool]):
-    """
-    Фильтрация по полю "Публичность"
-    :param queryset: исходный queryset
-    :param public: Bool True / False
-    :return: модернизированный queryset
-    """
-    if public:
-        queryset = queryset.filter(public=public)
-    return public
+    if public is not None:
+        return queryset.filter(public=public)
+    else:
+        return queryset
