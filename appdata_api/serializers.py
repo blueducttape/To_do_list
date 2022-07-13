@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 from appdata.models import Note
 
+
 class TodolistSerializer(serializers.ModelSerializer):
 
     author = serializers.SlugRelatedField(

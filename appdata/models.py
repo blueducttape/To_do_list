@@ -24,7 +24,8 @@ class Note(models.Model):
     public = models.BooleanField(default=False, verbose_name='Публичность')
     create_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
     update_at = models.DateTimeField(default=get_time_plus_day, verbose_name='Время завершения')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор', editable=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор', editable=False,
+                               related_name='author')
     status = models.IntegerField(default=Status.ACTIVE, choices=Status.choices, verbose_name='Статус')
 
     def __str__(self):

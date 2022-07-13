@@ -110,6 +110,7 @@ class TestTaskRetrieveUpdateDestroyAPIView(APITestCase):
         data = {
             "title": "fake_title",
         }
+
         url = f"/api/v1/notes/{note_pk}/"
         resp = self.auth_user_1.delete(url, data=data)
         self.assertEqual(resp.status_code, status.HTTP_403_FORBIDDEN)
