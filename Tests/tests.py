@@ -57,7 +57,7 @@ class TestTaskRetrieveUpdateDestroyAPIView(APITestCase):
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
 
     def test_get_forbidden(self):
-        """Автор не видит непубличную запись"""
+        """Автор не видит конкретную чужую непубличную запись"""
 
         note_pk = 2
         data = {
@@ -104,7 +104,7 @@ class TestTaskRetrieveUpdateDestroyAPIView(APITestCase):
 
 
     def test_delete_other_note(self):
-        """Автор не может удалить чужую запись"""
+        """Автор не может удалить чужую запись (публичную, непубличная)"""
 
         note_pk = 2
         data = {

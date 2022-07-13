@@ -8,7 +8,7 @@ class IndexView(View):
     Класс, позволяющий использовать специальную статическую форму для входа
     """
     def get(self, request: HttpRequest) -> HttpResponse:
-        return render(request, "login/templates/index.html")
+        return render(request, "templates/login/index.html")
 
     def post(self, request: HttpRequest) -> JsonResponse:
         return JsonResponse(request.POST, json_dumps_params={'indent': 4})

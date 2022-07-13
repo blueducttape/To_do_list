@@ -138,15 +138,12 @@ class TodoListFilterApiView(generics.ListAPIView):
     permission_classes = (IsAuthenticated,)
 
     def filter_queryset(self, queryset):
-        # забираем параметр публичности
+
         public = self.request.query_params.get('public')
-        queryset = filters.filter_by_public(queryset, public)
-        # забираем параметр важности
+        queryset = filters.importance_filter(queryset, public)
+
         important = self.request.query_params.get('important')
-        queryset = filters.filter_by_important(queryset, important)
-        # забираем статус
-        stat = self.request.query_params.getlist('status')
-        queryset = filters.filter_by_status(queryset, stat)
+        queryset = filters.public_filter(queryset, important)
 
         return queryset
 
